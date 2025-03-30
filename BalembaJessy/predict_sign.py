@@ -29,6 +29,10 @@ def upload_image():
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
     if file_path:
         predicted_class, confidence = predict_image(file_path)
+
+        # Print to console for debugging
+        print(f"Predicted Class: {predicted_class}, Confidence: {confidence:.2f}%")  
+        
         result_label.config(text=f"Predicted: {predicted_class}, Confidence: {confidence:.2f}%")
 
         img = Image.open(file_path)
