@@ -3,7 +3,8 @@ import numpy as np
 import os
 import sys
 import tensorflow as tf
-
+from tensorflow import keras
+from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
 
 EPOCHS = 10
@@ -38,11 +39,12 @@ def main():
     model.evaluate(x_test,  y_test, verbose=2)
 
     # Save model to file
+    save_dir = r'C:/Users/Balemba/Desktop/AIProject/BalembaJessy'
     if len(sys.argv) == 3:
-        filename = sys.argv[2]
-        model.save(filename)
-        print(f"Model saved to {filename}.")
-
+        filename = sys.argv[2]  # Get filename from command-line argument
+        save_path = os.path.join(save_dir, filename)
+        model.save(save_path)  # Save model using the provided filename
+        print(f"✅ Model saved successfully at: {os.path.abspath(save_path)}")
 
 def load_data(data_dir):
     """
@@ -97,8 +99,9 @@ def get_model():
     ])
     
     model.compile(optimizer="adam",
-                  loss="sparse_categorical_crossentropy",
-                  metrics=["accuracy"])
+              loss="categorical_crossentropy",
+              metrics=["accuracy"])
+
     
     return model
     raise NotImplementedError
