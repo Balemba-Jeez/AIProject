@@ -9,7 +9,7 @@ IMG_WIDTH = 30
 IMG_HEIGHT = 30
 
 # Load the trained model
-model_path = "C:/Users/Balemba/Desktop/AIProject/BalembaJessy/traffic_model.h5"
+model_path = "C:/Users/Balemba/Desktop/AIProject/BalembaJessy/best_model.h5"
 model = tf.keras.models.load_model(model_path)
 
 

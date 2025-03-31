@@ -30,8 +30,8 @@ def load_data(data_dir):
     return images, labels
 
 # Load your train and test datasets
-X_train, y_train = load_data("path/to/train_data")
-X_test, y_test = load_data("path/to/test_data")
+X_train, y_train = load_data(r"C:\Users\Balemba\Desktop\AIProject\data")
+X_test, y_test = load_data(r"C:\Users\Balemba\Desktop\AIProject\data")
 
 # Convert labels to one-hot encoding
 y_train = tf.keras.utils.to_categorical(y_train, NUM_CATEGORIES)
@@ -57,5 +57,9 @@ model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accur
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=32)
 
 # Save the trained model
-model.save("resnet50_model.h5")
-print("ResNet50 model saved as resnet50_model.h5")
+save_dir = r'C:/Users/Balemba/Desktop/AIProject/BalembaJessy'
+filename = "resnet50_model.h5"
+save_path = os.path.join(save_dir, filename)
+model.save(save_path)  # Save model using the provided filename
+# model.save("resnet50_model.h5")
+# print("ResNet50 model saved as resnet50_model.h5")
